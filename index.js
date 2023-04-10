@@ -37,7 +37,6 @@ app.get("/showUser/:uid",(req,res)=>{
     user.length !==0 ? res.status(200).json(user) : res.status(200).json({msg:"user not found"})
     
 })
-
 app.post("/addUser/",(req,res)=>{
     //console.log(req.body)
     
@@ -49,6 +48,7 @@ app.post("/addUser/",(req,res)=>{
     members.push({id:uuid.v4(),name,email})
     res.status(200).json(members)
 })
+
 
 
 
