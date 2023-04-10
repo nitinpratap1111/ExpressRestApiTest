@@ -62,6 +62,26 @@ app.delete("/deleteUser/:uid",(req,res)=>{
 
 })
 
+app.put("/updateUser/:id",(req,res)=>{
+    const found = members.some(member=> member.id ===parseInt(req.params.id))
+    if(found){
+        const updateMember = req.body
+        members.forEach(member=>{
+            if(member.id === parseInt(req.params.id)){
+                member.name = updateMember.name
+                member.email = updateMember.email
+            }
+
+        })
+        res.status(200).json(members)
+        
+
+    }
+    else{
+        res.status(400).json({msg:"user not found"})
+    }
+})
+
 
 
 
