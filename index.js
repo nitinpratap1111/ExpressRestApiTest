@@ -49,6 +49,19 @@ app.post("/addUser/",(req,res)=>{
     res.status(200).json(members)
 })
 
+app.delete("/deleteUser/:uid",(req,res)=>{
+    const id = parseInt(req.params.uid)
+    const found = members.some(member=> member.id===id)
+    if(found){
+        const results = members.filter(member =>member.id !==id)
+        res.status(200).json(results)
+    }
+    else{
+        res.status(400).json({msg:"no member exist with this id"})
+    }
+
+})
+
 
 
 
